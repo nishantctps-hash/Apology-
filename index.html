@@ -84,11 +84,6 @@
     button:hover {
       background: #e0527e;
     }
-    @media (max-width: 600px) {
-      .container {padding: 10px;}
-      .collage img {height:55px;}
-    }
-    /* Music button styling */
     #music-btn {
       position: fixed;
       right: 28px;
@@ -117,12 +112,15 @@
       height: 32px;
       vertical-align: middle;
     }
-    /* Hide iframe */
     #yt-music {
       display:none;
       position: absolute;
       left:-9999px;
       width:1px; height:1px;
+    }
+    @media (max-width: 600px) {
+      .container {padding: 10px;}
+      .collage img {height:55px;}
     }
   </style>
 </head>
@@ -135,7 +133,7 @@
     <svg id="musiciconoff" viewBox="0 0 24 24" fill="none" style="display:none;"><path d="M9 18V5l12-2v13M3 3l18 18" stroke="white" stroke-width="2" stroke-linecap="round"/><circle cx="6" cy="18" r="3" stroke="white" stroke-width="2"/></svg>
   </button>
   
-  <!-- PAGE 1 COLLAGE -->
+  <!-- PAGE 1 (Apology part 1) -->
   <div class="container" id="page1">
     <h1>My Apology</h1>
     <div class="collage">
@@ -145,52 +143,85 @@
     </div>
     <p>
       My dearest Chibani,<br><br>
-      Sometimes my heart aches when I think about how I hurt you. It’s hard for me to say sorry face to face—I get lost for words, and I know I’m wrong...
-      <br><br>Yours forever,<br>
-      Nishant
+      Sometimes my heart aches when I think about how I hurt you.
+      It’s hard for me to say sorry face to face—I get lost for words, and I know I’m wrong.
+      I never want to see pain in your beautiful eyes because of me, yet I did.<br>
     </p>
     <button onclick="showPage(2)">Next</button>
   </div>
-
-  <!-- PAGE 2 COLLAGE -->
+  
+  <!-- PAGE 2 (Apology part 2) -->
   <div class="container" id="page2" style="display:none;">
+    <h1>My Apology</h1>
+    <div class="collage">
+      <img src="collage1-4.jpg" alt="Memory 4">
+      <img src="collage1-5.jpg" alt="Memory 5">
+      <img src="collage1-6.jpg" alt="Memory 6">
+    </div>
+    <p>
+      I said things I never meant, and in a moment of frustration, I raised my hand.
+      My guilt eats away at me. The truth is, you are my world, and you deserved nothing but tenderness.
+      Even when you tease me or playfully hit me, I always feel loved.<br>
+    </p>
+    <button onclick="showPage(3)">Next</button>
+  </div>
+
+  <!-- PAGE 3 (Apology part 3) -->
+  <div class="container" id="page3" style="display:none;">
+    <h1>My Apology</h1>
+    <div class="collage">
+      <img src="collage1-7.jpg" alt="Memory 7">
+      <img src="collage1-8.jpg" alt="Memory 8">
+      <img src="collage1-9.jpg" alt="Memory 9">
+    </div>
+    <p>
+      But what I did wasn’t loving—it was out of line, and I’m so sorry.<br><br>
+      I love you, and I never want to lose you or your trust. Please forgive me, my love.<br>
+      Yours forever,<br>
+      Nishant
+    </p>
+    <button onclick="showPage(4)">Next</button>
+  </div>
+  
+  <!-- PAGE 4 (Vows) -->
+  <div class="container" id="page4" style="display:none;">
     <h1>My Vows To You</h1>
     <div class="collage">
-      <img src="collage2-1.jpg" alt="Memory 4">
-      <img src="collage2-2.jpg" alt="Memory 5">
-      <img src="collage2-3.jpg" alt="Memory 6">
+      <img src="collage2-1.jpg" alt="Memory 10">
+      <img src="collage2-2.jpg" alt="Memory 11">
+      <img src="collage2-3.jpg" alt="Memory 12">
     </div>
     <ul>
       <li><strong>I vow to never, ever raise my hand in anger or frustration.</strong> My hands are meant to hold you gently and protect you.</li>
       <li><strong>I vow to speak to you with kindness, even when life tests us.</strong> I will listen deeply and never let my words wound you.</li>
       <li><strong>I vow to treasure every moment with you.</strong> To respect and adore you always. Loving you is my greatest gift, and I promise to never forget that.</li>
     </ul>
-    <button onclick="showPage(3)">Next</button>
+    <button onclick="showPage(5)">Next</button>
   </div>
-
-  <!-- PAGE 3 COLLAGE -->
-  <div class="container" id="page3" style="display:none;">
+  
+  <!-- PAGE 5 (Moments Loved) -->
+  <div class="container" id="page5" style="display:none;">
     <h1>When You Made Me Feel Loved</h1>
     <div class="collage">
-      <img src="collage3-1.jpg" alt="Memory 7">
-      <img src="collage3-2.jpg" alt="Memory 8">
-      <img src="collage3-3.jpg" alt="Memory 9">
+      <img src="collage3-1.jpg" alt="Memory 13">
+      <img src="collage3-2.jpg" alt="Memory 14">
+      <img src="collage3-3.jpg" alt="Memory 15">
     </div>
     <ul>
       <li>When you wrapped me in hugs after long days, I felt understood and cherished.</li>
       <li>In your toughest pregnancy days, you still chose to stand by me and never let me feel alone...</li>
       <li>When you forgave my mistakes and loved me anyway, you showed me what real love feels like.</li>
     </ul>
-    <button onclick="showPage(4)">Next</button>
+    <button onclick="showPage(6)">Next</button>
   </div>
-
-  <!-- PAGE 4 COLLAGE -->
-  <div class="container" id="page4" style="display:none;">
+  
+  <!-- PAGE 6 (Hug button) -->
+  <div class="container" id="page6" style="display:none;">
     <h1>When You’re Ready</h1>
     <div class="collage">
-      <img src="collage4-1.jpg" alt="Memory 10">
-      <img src="collage4-2.jpg" alt="Memory 11">
-      <img src="collage4-3.jpg" alt="Memory 12">
+      <img src="collage4-1.jpg" alt="Memory 16">
+      <img src="collage4-2.jpg" alt="Memory 17">
+      <img src="collage4-3.jpg" alt="Memory 18">
     </div>
     <p>
       My heart is open, waiting for you.<br>
@@ -198,26 +229,22 @@
     </p>
     <button>Hug me when you forgive me ❤️</button>
   </div>
-
+  
   <script>
     function showPage(pageNum) {
-      for (let i = 1; i <= 4; i++) {
+      for (let i = 1; i <= 6; i++) {
         document.getElementById('page' + i).style.display = 'none';
       }
       document.getElementById('page' + pageNum).style.display = 'block';
     }
-
-    // --- MUSIC TOGGLE LOGIC --- //
-    // Default: music off
+    // Music Toggle Logic (same as previous code)
     let musicPlaying = false;
     let ytiframe = null;
     const btn = document.getElementById('music-btn');
     const iconon = document.getElementById('musiciconon');
     const iconoff = document.getElementById('musiciconoff');
     const ytdiv = document.getElementById('yt-music');
-    // Put your preferred YouTube music video ID here:
-    const YT_ID = "FHG2oizTlpY"; // "My Heart Will Go On" Celine Dion
-
+    const YT_ID = "FHG2oizTlpY"; // "My Heart Will Go On"
     btn.onclick = function() {
       if (!musicPlaying) {
         ytdiv.innerHTML = `<iframe width="0" height="0" src="https://www.youtube.com/embed/${YT_ID}?autoplay=1&loop=1&playlist=${YT_ID}" frameborder="0" allow="autoplay"></iframe>`;
@@ -231,8 +258,6 @@
         musicPlaying = false;
       }
     }
-
-    // Tooltips for touch devices
     btn.addEventListener('touchstart',function(){btn.title='Music';},false);
   </script>
 </body>
