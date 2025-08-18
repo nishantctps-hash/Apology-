@@ -10,7 +10,7 @@
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      background: #ffd6c1; /* peach */
+      background: #ffd6c1;
       background-image: url('https://cdn.pixabay.com/photo/2017/10/31/17/44/roses-2909487_1280.jpg');
       background-size: cover;
       background-repeat: repeat;
@@ -30,7 +30,7 @@
       text-align: center;
       border: 3px solid #ffd6c1;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
     .collage {
       display: grid;
@@ -118,6 +118,17 @@
       left:-9999px;
       width:1px; height:1px;
     }
+    .heart {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 32px;
+      height: 32px;
+      pointer-events: none;
+      opacity: 0.78;
+      z-index: 1;
+      animation-timing-function: linear;
+    }
     @media (max-width: 600px) {
       .container {padding: 10px;}
       .collage img {height:55px;}
@@ -125,9 +136,7 @@
   </style>
 </head>
 <body>
-  <!-- Hidden YouTube music iframe -->
   <div id="yt-music"></div>
-  <!-- Music toggle button -->
   <button id="music-btn" title="Toggle music">
     <svg id="musiciconon" viewBox="0 0 24 24" fill="none"><path d="M9 18V5l12-2v13" stroke="white" stroke-width="2" stroke-linecap="round"/><circle cx="6" cy="18" r="3" stroke="white" stroke-width="2"/></svg>
     <svg id="musiciconoff" viewBox="0 0 24 24" fill="none" style="display:none;"><path d="M9 18V5l12-2v13M3 3l18 18" stroke="white" stroke-width="2" stroke-linecap="round"/><circle cx="6" cy="18" r="3" stroke="white" stroke-width="2"/></svg>
@@ -138,6 +147,7 @@
     <h1>My Apology</h1>
     <div class="collage">
       <img src="collage1-1.jpg" alt="Memory 1">
+      <img src="collage1-3.jpg" alt="Memory 3">
     </div>
     <p>
       My dearest Chibani,<br><br>
@@ -165,7 +175,9 @@
   <!-- PAGE 3 (Apology part 3) -->
   <div class="container" id="page3" style="display:none;">
     <h1>My Apology</h1>
-        <p>
+    <div class="collage">
+    </div>
+    <p>
       But what I did wasn’t loving—it was out of line, and I’m so sorry.<br><br>
       I love you, and I never want to lose you or your trust. Please forgive me, my love.<br>
       Yours forever,<br>
@@ -179,7 +191,8 @@
     <h1>My Vows To You</h1>
     <div class="collage">
       <img src="collage2-1.jpg" alt="Memory 10">
-          </div>
+      <img src="collage2-3.jpg" alt="Memory 12">
+    </div>
     <ul>
       <li><strong>I vow to never, ever raise my hand in anger or frustration.</strong> My hands are meant to hold you gently and protect you.</li>
       <li><strong>I vow to speak to you with kindness, even when life tests us.</strong> I will listen deeply and never let my words wound you.</li>
@@ -194,7 +207,7 @@
     <div class="collage">
       <img src="collage3-1.jpg" alt="Memory 13">
       <img src="collage3-2.jpg" alt="Memory 14">
-        </div>
+    </div>
     <ul>
       <li>When you wrapped me in hugs after long days, I felt understood and cherished.</li>
       <li>In your toughest pregnancy days, you still chose to stand by me and never let me feel alone...</li>
@@ -209,7 +222,7 @@
     <div class="collage">
       <img src="collage4-1.jpg" alt="Memory 16">
       <img src="collage4-2.jpg" alt="Memory 17">
-       </div>
+    </div>
     <p>
       My heart is open, waiting for you.<br>
       When you’re ready to forgive, I’ll be here—with open arms, so grateful, so in love.
@@ -217,6 +230,7 @@
     <button>Hug me when you forgive me ❤️</button>
   </div>
   
+  <!-- Flying Hearts Script -->
   <script>
     function showPage(pageNum) {
       for (let i = 1; i <= 6; i++) {
@@ -224,14 +238,13 @@
       }
       document.getElementById('page' + pageNum).style.display = 'block';
     }
-    // Music Toggle Logic (same as previous code)
     let musicPlaying = false;
     let ytiframe = null;
     const btn = document.getElementById('music-btn');
     const iconon = document.getElementById('musiciconon');
     const iconoff = document.getElementById('musiciconoff');
     const ytdiv = document.getElementById('yt-music');
-    const YT_ID = "FHG2oizTlpY"; // "My Heart Will Go On"
+    const YT_ID = "FHG2oizTlpY";
     btn.onclick = function() {
       if (!musicPlaying) {
         ytdiv.innerHTML = `<iframe width="0" height="0" src="https://www.youtube.com/embed/${YT_ID}?autoplay=1&loop=1&playlist=${YT_ID}" frameborder="0" allow="autoplay"></iframe>`;
@@ -246,6 +259,39 @@
       }
     }
     btn.addEventListener('touchstart',function(){btn.title='Music';},false);
+
+    const heartSVG = color =>
+      `data:image/svg+xml;utf8,<svg width='32' height='32' xmlns='http://www.w3.org/2000/svg'><path d='M16 29 C-10 12, 8 0, 16 9 C24 0, 42 12, 16 29 Z' fill='${encodeURIComponent(color)}' /></svg>`;
+    function createHeart() {
+      const heart = document.createElement('img');
+      const colors = ["#ff4b8a","#ff2f2f","#fd7383","#de3659"];
+      heart.src = heartSVG(colors[Math.floor(Math.random()*colors.length)]);
+      heart.className = 'heart';
+      const left = Math.random()*95;
+      heart.style.left = left + 'vw';
+      heart.style.top = '100vh';
+      const duration = 6 + Math.random()*7;
+      const delay = Math.random()*5;
+      heart.style.animation = `float${left.toFixed(0)} ${duration}s linear ${delay}s forwards`;
+      const drift = (Math.random()*40-20).toFixed(1);
+      const rotate = (Math.random()*100-50).toFixed(1);
+      const keyframes = `
+        @keyframes float${left.toFixed(0)} {
+          to {
+            top: -40px;
+            left: calc(${left}vw + ${drift}px);
+            opacity: 0;
+            transform: rotate(${rotate}deg);
+          }
+        }
+      `;
+      const style = document.createElement('style');
+      style.innerHTML = keyframes;
+      document.head.appendChild(style);
+      document.body.appendChild(heart);
+      setTimeout(()=>{heart.remove();style.remove();}, duration*1000+delay*1000);
+    }
+    setInterval(createHeart, 400);
   </script>
 </body>
 </html>
