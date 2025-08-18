@@ -19,6 +19,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
     }
     .container {
       background: rgba(255, 255, 255, 0.96);
@@ -30,6 +31,22 @@
       border: 3px solid #ffd6c1;
       position: relative;
       z-index: 1;
+    }
+    .collage {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 25px;
+      margin-top: 10px;
+    }
+    .collage img {
+      width: 100%;
+      height: 85px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid #ff6999;
+      box-shadow: 0 1px 8px rgba(255,101,153,0.16);
+      background: #fff;
     }
     h1 {
       font-size: 2.4em;
@@ -67,80 +84,82 @@
     button:hover {
       background: #e0527e;
     }
-    .photos-row {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 25px;
-      gap: 10px;
-    }
-    .profile-photo {
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid #ff6999;
-      box-shadow: 0 3px 12px rgba(255,101,153,0.2);
-      background: #fff;
-    }
-    .together-photo {
-      width: 260px;
-      object-fit: cover;
-      border-radius: 20px;
-      box-shadow: 0 3px 18px rgba(255,101,153,0.22);
-      margin-bottom: 20px;
-      margin-top:10px;
-      border: 3px solid #ff6999;
-      background: #fff;
-    }
     @media (max-width: 600px) {
-      .container {padding: 10px; }
-      .profile-photo { width:85px; height:85px;}
-      .together-photo {width:95vw;}
+      .container {padding: 10px;}
+      .collage img {height:55px;}
     }
-    /* Heart shapes */
-    .heart {
+    /* Music button styling */
+    #music-btn {
       position: fixed;
-      top: 0;
-      left: 0;
+      right: 28px;
+      bottom: 26px;
+      width: 60px;
+      height: 60px;
+      border:none;
+      border-radius: 50%;
+      background: #ff6999;
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(255,101,153,0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      cursor:pointer;
+      font-size: 2em;
+      transition: background 0.2s;
+      outline: none;
+    }
+    #music-btn:hover {
+      background: #e0527e;
+    }
+    #music-btn svg {
       width: 32px;
       height: 32px;
-      pointer-events: none;
-      opacity: 0.78;
-      z-index: 0;
-      animation-name: float;
-      animation-timing-function: linear;
+      vertical-align: middle;
     }
-    /* animation will be set dynamically by JS */
+    /* Hide iframe */
+    #yt-music {
+      display:none;
+      position: absolute;
+      left:-9999px;
+      width:1px; height:1px;
+    }
   </style>
 </head>
 <body>
-  <!-- YouTube music in background: "My Heart Will Go On" -->
-  <iframe width="0" height="0" src="https://www.youtube.com/embed/FHG2oizTlpY?autoplay=1&loop=1&playlist=FHG2oizTlpY" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+  <!-- Hidden YouTube music iframe -->
+  <div id="yt-music"></div>
+  <!-- Music toggle button -->
+  <button id="music-btn" title="Toggle music">
+    <svg id="musiciconon" viewBox="0 0 24 24" fill="none"><path d="M9 18V5l12-2v13" stroke="white" stroke-width="2" stroke-linecap="round"/><circle cx="6" cy="18" r="3" stroke="white" stroke-width="2"/></svg>
+    <svg id="musiciconoff" viewBox="0 0 24 24" fill="none" style="display:none;"><path d="M9 18V5l12-2v13M3 3l18 18" stroke="white" stroke-width="2" stroke-linecap="round"/><circle cx="6" cy="18" r="3" stroke="white" stroke-width="2"/></svg>
+  </button>
   
-  <!-- PAGE 1 -->
+  <!-- PAGE 1 COLLAGE -->
   <div class="container" id="page1">
     <h1>My Apology</h1>
-    <div class="photos-row">
-      <img src="me.jpg" alt="Nishant" class="profile-photo" />
-      <img src="her.jpg" alt="Chibani" class="profile-photo" />
+    <div class="collage">
+      <img src="collage1-1.jpg" alt="Memory 1">
+      <img src="collage1-2.jpg" alt="Memory 2">
+      <img src="collage1-3.jpg" alt="Memory 3">
     </div>
     <p>
       My dearest Chibani,<br><br>
-      Sometimes my heart aches when I think about how I hurt you. It’s hard for me to say sorry face to face—I get lost for words, and I know I’m wrong. I never want to see pain in your beautiful eyes because of me, yet I did.  
-      I said things I never meant, and in a moment of frustration, I raised my hand. My guilt eats away at me.<br><br>
-      The truth is, you are my world, and you deserved nothing but tenderness. Even when you tease me or playfully hit me, I always feel loved. But what I did wasn’t loving—it was out of line, and I’m so sorry.<br><br>
-      I love you, and I never want to lose you or your trust. Please forgive me, my love.<br><br>
-      Yours forever,<br>
+      Sometimes my heart aches when I think about how I hurt you. It’s hard for me to say sorry face to face—I get lost for words, and I know I’m wrong...
+      <br><br>Yours forever,<br>
       Nishant
     </p>
     <button onclick="showPage(2)">Next</button>
   </div>
-  
-  <!-- PAGE 2 -->
+
+  <!-- PAGE 2 COLLAGE -->
   <div class="container" id="page2" style="display:none;">
     <h1>My Vows To You</h1>
-    <img src="together.jpg" alt="Us Together" class="together-photo" />
+    <div class="collage">
+      <img src="collage2-1.jpg" alt="Memory 4">
+      <img src="collage2-2.jpg" alt="Memory 5">
+      <img src="collage2-3.jpg" alt="Memory 6">
+    </div>
     <ul>
       <li><strong>I vow to never, ever raise my hand in anger or frustration.</strong> My hands are meant to hold you gently and protect you.</li>
       <li><strong>I vow to speak to you with kindness, even when life tests us.</strong> I will listen deeply and never let my words wound you.</li>
@@ -148,29 +167,30 @@
     </ul>
     <button onclick="showPage(3)">Next</button>
   </div>
-  
-  <!-- PAGE 3 -->
+
+  <!-- PAGE 3 COLLAGE -->
   <div class="container" id="page3" style="display:none;">
     <h1>When You Made Me Feel Loved</h1>
-    <div class="photos-row">
-      <img src="her.jpg" alt="Chibani" class="profile-photo" />
+    <div class="collage">
+      <img src="collage3-1.jpg" alt="Memory 7">
+      <img src="collage3-2.jpg" alt="Memory 8">
+      <img src="collage3-3.jpg" alt="Memory 9">
     </div>
     <ul>
       <li>When you wrapped me in hugs after long days, I felt understood and cherished.</li>
-      <li>In your toughest pregnancy days, you still chose to stand by me and never let me feel alone, even when you could have sent me away for chores.</li>
-      <li>You defended me in front of your mother, even when she couldn’t see what you see in me. Your loyalty is my strength.</li>
-      <li>When you made me laugh, cooked my favorite food, or whispered sweet things before sleep—every moment was pure love.</li>
+      <li>In your toughest pregnancy days, you still chose to stand by me and never let me feel alone...</li>
       <li>When you forgave my mistakes and loved me anyway, you showed me what real love feels like.</li>
     </ul>
     <button onclick="showPage(4)">Next</button>
   </div>
-  
-  <!-- PAGE 4 -->
+
+  <!-- PAGE 4 COLLAGE -->
   <div class="container" id="page4" style="display:none;">
     <h1>When You’re Ready</h1>
-    <div class="photos-row">
-      <img src="me.jpg" alt="Nishant" class="profile-photo" />
-      <img src="her.jpg" alt="Chibani" class="profile-photo" />
+    <div class="collage">
+      <img src="collage4-1.jpg" alt="Memory 10">
+      <img src="collage4-2.jpg" alt="Memory 11">
+      <img src="collage4-3.jpg" alt="Memory 12">
     </div>
     <p>
       My heart is open, waiting for you.<br>
@@ -178,8 +198,7 @@
     </p>
     <button>Hug me when you forgive me ❤️</button>
   </div>
-  
-  <!-- Animated Hearts Script -->
+
   <script>
     function showPage(pageNum) {
       for (let i = 1; i <= 4; i++) {
@@ -188,45 +207,33 @@
       document.getElementById('page' + pageNum).style.display = 'block';
     }
 
-    // Heart SVG as Data URL
-    const heartSVG = color => 
-      `data:image/svg+xml;utf8,<svg width='32' height='32' xmlns='http://www.w3.org/2000/svg'><path d='M16 29 C-10 12, 8 0, 16 9 C24 0, 42 12, 16 29 Z' fill='${encodeURIComponent(color)}' /></svg>`;
+    // --- MUSIC TOGGLE LOGIC --- //
+    // Default: music off
+    let musicPlaying = false;
+    let ytiframe = null;
+    const btn = document.getElementById('music-btn');
+    const iconon = document.getElementById('musiciconon');
+    const iconoff = document.getElementById('musiciconoff');
+    const ytdiv = document.getElementById('yt-music');
+    // Put your preferred YouTube music video ID here:
+    const YT_ID = "FHG2oizTlpY"; // "My Heart Will Go On" Celine Dion
 
-    function createHeart() {
-      const heart = document.createElement('img');
-      // Randomly pink or red
-      const colors = ["#ff4b8a","#ff2f2f","#fd7383","#de3659"];
-      heart.src = heartSVG(colors[Math.floor(Math.random()*colors.length)]);
-      heart.className = 'heart';
-      const left = Math.random()*90;
-      heart.style.left = left + 'vw';
-      heart.style.top = '100vh';
-      const duration = 6 + Math.random()*7; // 6s to 13s
-      const delay = Math.random()*5;
-      heart.style.animation = `float ${duration}s linear ${delay}s forwards`;
-      // Animation: up and fade out, slight drift
-      const drift = (Math.random()*40-20).toFixed(1);
-      const keyframes = `
-        @keyframes float {
-          to {
-            top: -40px;
-            left: calc(${left}vw + ${drift}px);
-            opacity: 0;
-            transform: rotate(${Math.random()*120-60}deg);
-          }
-        }
-      `;
-      if (!document.getElementById('heartfloatstyle')) {
-        const style = document.createElement('style');
-        style.id = 'heartfloatstyle';
-        document.head.appendChild(style);
+    btn.onclick = function() {
+      if (!musicPlaying) {
+        ytdiv.innerHTML = `<iframe width="0" height="0" src="https://www.youtube.com/embed/${YT_ID}?autoplay=1&loop=1&playlist=${YT_ID}" frameborder="0" allow="autoplay"></iframe>`;
+        iconon.style.display = "none";
+        iconoff.style.display = "";
+        musicPlaying = true;
+      } else {
+        ytdiv.innerHTML = "";
+        iconon.style.display = "";
+        iconoff.style.display = "none";
+        musicPlaying = false;
       }
-      document.getElementById('heartfloatstyle').textContent = keyframes;
-      document.body.appendChild(heart);
-      setTimeout(()=>heart.remove(), duration*1000+delay*1000);
     }
-    // Create random hearts every 350ms
-    setInterval(createHeart, 350);
+
+    // Tooltips for touch devices
+    btn.addEventListener('touchstart',function(){btn.title='Music';},false);
   </script>
 </body>
 </html>
